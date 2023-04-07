@@ -2,6 +2,7 @@ import { API, endpoints } from "../api"
 
 class UserService {
     static createUser(user) {
+        console.log("user", user)
         return API.post(endpoints.api.users.create, user)
     }
     static updateUser(id, user) {

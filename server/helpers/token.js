@@ -1,19 +1,23 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken")
 
-const createToken = (payload = {}, expiry = 60 * 10) => {
+function createToken(payload = {}, expire = 60 * 10) {
+
     try {
-        return jwt.sign(payload, process.env.KEY, { expiresIn: expiry });
-    } catch (err) {
-        console.error(err);
+        return jwt.sign(payload, process.env.KEY, { expiresIn: expire })
     }
-};
+    catch (err) {
+        console.log("create token error", err)
+    }
+}
 
-const verifyToken = (token) => {
+function verifyToken(token) {
     try {
-        return jwt.verify(token, process.env.KEY);
-    } catch (err) {
-        console.error(err);
+        return jwt.verify(token, process.env.KEY)
     }
-};
+    catch (err) {
+        console.log("verify token err", err)
+    }
 
-module.exports = { createToken, verifyToken };
+}
+
+module.exports = { createToken, verifyToken }

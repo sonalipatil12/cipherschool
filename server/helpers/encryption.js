@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt")
 
-
 function encrypt(text) {
     try {
         return bcrypt.hashSync(text, 10)

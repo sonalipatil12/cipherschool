@@ -1,7 +1,7 @@
 const express = require("express")
-const bodyparser = require("body-parser")
+const bodyParser = require("body-parser")
 const cors = require("cors")
-require("./models/db")
+require("./v1/models/db")
 require("dotenv").config()
 const port = process.env.PORT || 8888
 
@@ -11,12 +11,15 @@ app.use((req, res, next) => {
     res.header("Access-Control-Expose-Headers", "x-access-token,x-refresh-token");
     next();
 });
-app.use(bodyparser.json())
 app.use(express.static("uploads"))
+app.use(bodyParser.json())
 
-//routes here
-app.use("api/users", require("./routes/user.route"))
-app.use("api/auth", require("./routes/auth.route"))
+
+//define routes here
+
+app.use("/api/v1/users", require("./v1/routes/user.route"))
+app.use("/api/v1/auth", require("./v1/routes/auth.route"))
+
 
 app.listen(port, () => {
     console.log(`server is listning on port number ${port}`)

@@ -1,4 +1,4 @@
-import react from "react"
+import react, { useEffect } from "react"
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
 import { BlankLayout, FullLayout, Error } from "./layout"
 import AuthService from "./services/AuthService";
@@ -8,16 +8,18 @@ const ProtectedRoutes = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loggedUSer = useSelector(selectUser)
-  AuthService.validateToken()
-    .then((response) => {
-      dispatch(addUser(response?.data?.data))
-    })
-    .catch((err) => {
-      if (err.response.staus = 420)
-        sessionStorage.clear()
-      navigate("/login")
+  useEffect(() => {
+    AuthService.validateToken()
+      .then((response) => {
+        dispatch(addUser(response?.data?.data))
+      })
+      .catch((err) => {
+        if (err.response.staus = 420)
+          sessionStorage.clear()
+        navigate("/login")
+      })
 
-    })
+  }, [])
   const token = sessionStorage.getItem("access");
   return loggedUSer._id || token ? children : <Navigate to="/login" />;
 }

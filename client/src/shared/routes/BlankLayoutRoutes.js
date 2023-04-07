@@ -19,8 +19,9 @@ const Tour = lazy(() => import("../../pages/Tour"))
 const Trending = lazy(() => import("../../pages/Trending"))
 const Feedback = lazy(() => import("../../pages/Feedback"))
 const discord = lazy(() => import("../../pages/discord"))
-const Register = lazy(() => import("../../pages/Register"))
+const Register = lazy(() => import("../../pages/Register/Register"))
 const Createor = lazy(() => import("../../pages/Createor"))
+const Profile = lazy(() => import("../../pages/profile/Profile"))
 
 
 export default [
@@ -115,4 +116,5 @@ export default [
         component: <Login />,
         showInMenu: true,
     },
+
 ]

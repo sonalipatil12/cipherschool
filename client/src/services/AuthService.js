@@ -1,7 +1,7 @@
 import { endpoints, API } from "../api"
 
 class AuthService {
-    static UserLogin(user) {
+    static userLogin(user) {
         return API.post(endpoints.api.auth.userLogin, user).then((response) => {
             const accessToken = response.headers["x-access-token"];
             const refreshToken = response.headers["x-refresh-token"];

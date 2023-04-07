@@ -2,7 +2,7 @@ import axios from "axios";
 import endpoints from "./endpoints";
 import AuthService from "../services/AuthService";
 const API = axios.create({
-    baseURL: endpoints.serverBaseUrl + "api"
+    baseURL: endpoints.serverBaseUrl + "/api/v1"
 })
 
 API.interceptors.request.use((req) => {

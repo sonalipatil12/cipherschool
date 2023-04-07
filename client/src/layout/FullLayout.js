@@ -1,7 +1,13 @@
 import React from 'react'
+import { BlankLayout } from '.';
+import Profile from '../pages/profile/Profile';
 const FullLayout = () => {
     return (<>
-        <h1>Full Layout</h1>
+        <Profile />
+        <BlankLayout />
+
+
+
     </>);
 }
 
