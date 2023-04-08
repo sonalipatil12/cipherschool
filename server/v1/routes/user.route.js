@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const multer = require("multer")
 const path = require("path")
-const authorization = require("../../helpers/middlewares/authorize")
+
 
 
 const storage = multer.diskStorage({
@@ -28,19 +28,17 @@ router.put("/:id", upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "idDoc", maxCount: 1 }
 ]),
-    authorization(["admin", "teacher", "student", "parent"]),
     updateUser)
 router.post("/image/:id", upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "idDoc", maxCount: 1 }
 ]),
-    // authorization(["admin", "teacher", "student", "parent"])
-    // ,
+
     updateDeleteImage)
 router.get("/:id",
-    //  authorization(["admin", "teacher", "student", "parent"]), 
+
     fetchOneUser)
-router.get("/", authorization(["admin", "teacher", "student", "parent"]), fetchAllUser)
+router.get("/", fetchAllUser)
 
 
 module.exports = router

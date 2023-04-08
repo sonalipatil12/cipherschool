@@ -1,0 +1,15 @@
+@import "../../cssconfig/CssConfig.scss";
+
+.inputfield {
+
+    label {}
+
+    input {
+        border: none;
+        outline: none;
+        background-color: white;
+        width: 100%;
+        padding: 15px 0;
+        border-radius: 10px;
+    }
+}

@@ -9,30 +9,31 @@ class AuthCtrl {
         UserModel.findOne({ email: email, status: 1 })
             .then((result) => {
                 if (!result) throw new Error("invalid email")
-                else if (compareHash(password, result?.password)) {
+                else
+                    if (compareHash(password, result?.password)) {
 
-                    const accessT = createToken(
-                        {
-                            _id: result?.id,
-                            role: result?.role
-                        },
-                        10 * 60
-                    )
+                        const accessT = createToken(
+                            {
+                                _id: result?.id,
+                                role: result?.role
+                            },
+                            10 * 60
+                        )
 
-                    const refreshT = createToken(
-                        {
-                            _id: result?.id,
-                            role: result?.role,
-                        },
-                        25 * 60
-                    )
-                    res.set("x-access-token", accessT)
-                    res.set("x-refresh-token", refreshT)
-                    res.status(200).send({ message: "Login successful", data: result })
-                }
-                else {
-                    res.status(404).send({ message: "Invalid password" })
-                }
+                        const refreshT = createToken(
+                            {
+                                _id: result?.id,
+                                role: result?.role,
+                            },
+                            25 * 60
+                        )
+                        res.set("x-access-token", accessT)
+                        res.set("x-refresh-token", refreshT)
+                        res.status(200).send({ message: "Login successful", data: result })
+                    }
+                    else {
+                        res.status(404).send({ message: "Invalid password" })
+                    }
             })
             .catch((err) => {
                 console.log("userLogin", err)

@@ -53,13 +53,14 @@ class UserCtrl {
     }
     static updateUser(req, res) {
         const { id } = req.params;
+        console.log("iduser", id)
         const user = req.body;
         if (user.password) encrypt(user.password)
-        if (req.files.avatar) {
+        if (req?.files?.avatar) {
             const ava = req?.files.avatar[0];
             user.avatar = `users-avatar/${ava?.filename}`;
         }
-        if (req.files.idDoc) {
+        if (req?.files?.idDoc) {
             const ava = req?.files.idDoc[0];
             user.idDoc = `users-id/${ava?.filename}`;
         }

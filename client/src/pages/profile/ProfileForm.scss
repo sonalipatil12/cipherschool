@@ -1,0 +1,53 @@
+@import "../../cssconfig/CssConfig.scss";
+
+.profile-outer-div {
+    width: 400px;
+
+    @include md {
+        width: 800px;
+
+    }
+
+    .heading {
+
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+    }
+
+    .img-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+        }
+
+        .icon {
+            background-color: white;
+            position: absolute;
+            top: 20%;
+
+            @include md {
+                top: 50%;
+            }
+        }
+    }
+
+    .inputfield {
+        input {
+            border: none;
+            background-color: #f2f5fa;
+            width: 100%;
+            padding: 20px;
+            border-radius: 5px;
+            outline: none;
+        }
+    }
+}

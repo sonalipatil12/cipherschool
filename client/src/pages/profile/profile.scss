@@ -3,4 +3,16 @@
 
 .profile-div {
     height: 20vh;
+
+    .icon {
+        background-color: white;
+        position: absolute;
+        top: 17%;
+        left: 16%;
+
+        @include md {
+            left: 13%
+        }
+
+    }
 }

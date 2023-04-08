@@ -4,6 +4,7 @@ import { BlankLayout, FullLayout, Error } from "./layout"
 import AuthService from "./services/AuthService";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, addUser } from "./app/slices/AuthSlice"
+
 const ProtectedRoutes = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const ProtectedRoutes = ({ children }) => {
 }
 function App() {
   return (
+
     <Routes>
       <Route path="/*" element={<BlankLayout />} />
       <Route path="/secured/*" element={
